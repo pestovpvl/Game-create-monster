@@ -24,11 +24,16 @@ $(document).ready(function () {
 				left: "-=367px"
 			}, 500);
 			clix[i] = clix[i] + 1;
+
+
+
 		} else {
 			clix[i] = 0;
 			$(obj).animate({
 				left: '0px'
 			}, 500);
+
+
 		}
 	}
 
@@ -38,7 +43,7 @@ $(document).ready(function () {
 	// Flash light
 
 
-	goLightning();
+
 	window.onblur = stopLightning;
 	window.onfocus = goLightning;
 	var int1, int2, int3;
@@ -75,8 +80,37 @@ $(document).ready(function () {
 	function lightning_three() {
 		$("#container #lightning3").fadeIn(250).fadeOut(250);
 	};
+// Add function for gnerate number
 
 
+
+
+
+
+
+
+
+	var w = 367; 
+	var m = 10;
+	$("#btnRandom").click(randomize);
+	$("#btnReset").click();
+
+	function getRandom(num) {
+		var my_random_num = Math.floor(Math.random() * num);
+		return my_random_num;
+	}
+
+	function randomize() {
+		$(".face").each(function (index) {
+			var target_position = getRandom(m);
+			var current_position = clix[index];
+			clix[index] = target_position;
+			var move_to = target_position * w;
+			$(this).animate({
+				left: "-=" + move_to + "px"
+			}, 500);
+		});
+	};
 
 
 });
