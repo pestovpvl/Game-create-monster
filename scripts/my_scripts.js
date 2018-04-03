@@ -25,8 +25,6 @@ $(document).ready(function () {
 			}, 500);
 			clix[i] = clix[i] + 1;
 
-
-
 		} else {
 			clix[i] = 0;
 			$(obj).animate({
@@ -80,20 +78,16 @@ $(document).ready(function () {
 	function lightning_three() {
 		$("#container #lightning3").fadeIn(250).fadeOut(250);
 	};
-// Add function for gnerate number
+	// Add function for gnerate number
 
 
 
 
-
-
-
-
-
-	var w = 367; 
+	var w = 367;
 	var m = 10;
-	$("#btnRandom").click(randomize);
-	$("#btnReset").click();
+
+$("#btnRandom").click( randomize );
+$("#btnReset").click( );
 
 	function getRandom(num) {
 		var my_random_num = Math.floor(Math.random() * num);
@@ -105,12 +99,22 @@ $(document).ready(function () {
 			var target_position = getRandom(m);
 			var current_position = clix[index];
 			clix[index] = target_position;
-			var move_to = target_position * w;
-			$(this).animate({
-				left: "-=" + move_to + "px"
-			}, 500);
+console.log(clix[index]);
+
+			if (target_position > current_position) {
+				var move_to = (target_position - current_position) * w;
+				$(this).animate({
+					left: "-=" + move_to + "px"
+				}, 500);
+			} else if (target_position < current_position) {
+				var move_to = (current_position - target_position) * w;
+				$(this).animate({
+					left: "+=" + move_to + "px"
+				}, 500);
+			} else {
+				// Позиция не изменилась - ничего не делать.
+			}
+
 		});
-	};
-
-
+	}
 });
