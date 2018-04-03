@@ -87,7 +87,7 @@ $(document).ready(function () {
 	var m = 10;
 
 $("#btnRandom").click( randomize );
-$("#btnReset").click( );
+$("#btnReset").click( reset );
 
 	function getRandom(num) {
 		var my_random_num = Math.floor(Math.random() * num);
@@ -117,4 +117,15 @@ console.log(clix[index]);
 
 		});
 	}
+
+	function reset(){
+		$(".face").each(function(index){
+			console.log("clix durty" + clix[index]);
+			clix[index] = 0;
+			$(this).animate({left: "0px"}, 500);
+		});
+
+	}
+
+
 });
